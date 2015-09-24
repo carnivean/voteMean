@@ -9,8 +9,11 @@ angular.module('meanVoteApp')
 
     $scope.pollFetched = false;
 
+    $scope.selectedVote = 0;
+    var apiString;
+
     var submitPoll = function() {
-      var apiString = '/api/polls/' + $scope.$routeParams.username + '/' + $scope.$routeParams.question;
+      apiString = '/api/polls/' + $scope.$routeParams.username + '/' + $scope.$routeParams.question;
       $log.log('apiString: ' + apiString);
 
       $http.get(apiString).success(function(data) {
@@ -20,6 +23,10 @@ angular.module('meanVoteApp')
       }).error(function(data) {
         console.log('Error: ' + data);
       });
+    };
+
+    $scope.submitVote = function() {
+
     };
 
     submitPoll();
