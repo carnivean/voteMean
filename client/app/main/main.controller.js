@@ -8,6 +8,8 @@ angular.module('meanVoteApp')
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
+    $scope.page = "newpoll";
+
     $http.get('/api/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;
     });

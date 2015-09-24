@@ -5,7 +5,7 @@
 'use strict';
 
 angular.module('meanVoteApp')
-  .controller('NewPollCtrl', function ($scope, $location, Auth) {
+  .controller('NewPollCtrl', function ($scope, $location, Auth, $log) {
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
@@ -13,6 +13,8 @@ angular.module('meanVoteApp')
 
     $scope.placeholders = ['Coke', 'Pepsi'];
     $scope.options = ["", ""];
+
+
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
@@ -22,6 +24,23 @@ angular.module('meanVoteApp')
     $scope.addOption = function() {
         $scope.placeholders.push('New Option');
         $scope.options.push('');
+    };
+
+    $scope.submitPoll = function() {
+        var newDbEntry = {};
+        newDbEntry.Owner = Auth.getCurrentUser;
+        var data = {};
+        for (var index = 0; index < $scope.options.length; index++) {
+          data[$scope.options[index]] = 0;
+        }
+
+        newDbEntry.options = data;
+
+        // debug purposes
+        $log.log(newDbEntry);
+        $log.log(newDbEntry.options);
+
+        $scope.page = 'pollposted';
     };
 
     $scope.isActive = function(route) {

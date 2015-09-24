@@ -1,17 +1,28 @@
 <div class="text-center col-sm-12 col-lg-12 col-md-12"  ng-controller="NewPollCtrl">
-  <h2>New Poll</h2>
-  <h3>Name your Poll.</h3>
-  <div class="form-group">
-    <input id="pollname" ng-model="poll.name" name="pollname" placeholder="What is your favorite brand?" class="input-poll form-control"
-           required>
-    <h4>Options</h4>
-    <input ng-repeat="ph in placeholders track by $index" placeholder="{{ph}}" ng-model="options[$index]"
-           class="input-poll form-control" required>
+  <div ng-show="page==='newpoll'">
+
+    <h2>New Poll</h2>
+    <h3>Name your Poll.</h3>
+    <div class="form-group">
+      <input id="pollname" ng-model="poll.name" name="pollname" placeholder="What is your favorite brand?" class="input-poll form-control"
+             required>
+      <h4>Options</h4>
+      <input ng-repeat="ph in placeholders track by $index" placeholder="{{ph}}" ng-model="options[$index]"
+             class="input-poll form-control" required>
+    </div>
+    <div>
+      <button class="btn-polls btn-primary btn" ng-click="addOption()">More Options</button><br>
+      <button class="btn-polls btn-primary btn" ng-click="submitPoll()">Submit</button>
+    </div>
+    <div>
+      <p ng-repeat="option in options track by $index">{{option}}</p>
+    </div>
+
   </div>
-  <div>
-    <button class="btn-add-options btn-primary btn" ng-click="addOption()">More Options</button>
+  <div ng-show="page==='pollposted'">
+
+    Poll posted... coming soon...
+
   </div>
-  <div>
-    <p ng-repeat="option in options track by $index">{{option}}</p>
-  </div>
+
 </div>

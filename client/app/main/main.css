@@ -70,4 +70,8 @@
   margin: 0 auto;
   text-align: left;
 }
+
+.btn-polls {
+  width: 300px;
+  margin-bottom: 5px;
 }
