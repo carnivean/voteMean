@@ -19,4 +19,6 @@ var PollSchema = new Schema ({
   comments: [commentSchema]
 });
 
+PollSchema.index({ userName: 1, question: 1}, { unique: true });
+
 module.exports = mongoose.model('Poll', PollSchema);

@@ -20,10 +20,12 @@
     </div>
 
   </div>
-  <div ng-show="page==='pollposted'">
-
-    Poll posted... coming soon...
-
+  <div ng-show="page==='pollposted'" class="text-center">
+    <h2>Success!</h2>
+    <h3>Your poll was created. You can share it here:</h3><br>
+    <a href="/{{name}}/{{pollname}}">{{loc}}{{name}}/{{pollname}}</a><br>
+    <h3>The result is available here:</h3><br>
+    <a href="/{{name}}/{{pollname}}/result">{{loc}}{{name}}/{{pollname}}/result</a><br>
   </div>
 
 </div>

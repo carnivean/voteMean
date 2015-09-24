@@ -33,8 +33,10 @@ angular.module('meanVoteApp')
         $scope.options.push('');
     };
 
+    var newDbEntry;
+
     $scope.submitPoll = function() {
-        var newDbEntry = {};
+        newDbEntry = {};
         newDbEntry.userName = Auth.getCurrentUser().name;
         newDbEntry.question = $scope.pollname;
         newDbEntry.comments = [];
@@ -46,10 +48,19 @@ angular.module('meanVoteApp')
           newDbEntry.poll_options.push($scope.options[index]);
         }
 
+
+
         $http.post('/api/polls', newDbEntry)
           .success(function(data) {
             resetValues();
+
+            // set the variables for rendering the continue view
+            $scope.pollname = newDbEntry.question;
+            $scope.name = newDbEntry.userName;
+            $scope.loc  = $location.absUrl();
+
             $scope.page = 'pollposted';
+
             console.log(data);
           })
           .error(function(data) {

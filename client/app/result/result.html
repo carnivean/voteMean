@@ -9,10 +9,9 @@
     </div>
 
     <div class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-12"  ng-show="loaded">
-      <h2>Testing</h2>
       <ul class="list-group">
-        <li ng-repeat="option in $polldata.poll_options track by $index" class="list-group-item">
-          {{$polldata.poll_options[$index]}} - {{$polldata.poll_results[$index]}} votes
+        <li ng-repeat="option in $pollData.poll_options track by $index" class="list-group-item">
+          {{$pollData.poll_options[$index]}} - {{$pollData.poll_results[$index]}} votes
         </li>
       </ul>
     </div>
