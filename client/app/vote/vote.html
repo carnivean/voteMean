@@ -1,19 +1,4 @@
 
-
-<header class="hero-unit" id="banner">
-  <div class="container" ng-hide="isLoggedIn()" >
-    <h1>MeanVote</h1>
-    <p class="lead">Create custom polls with live results. {{isLoggedIn()}}</p>
-    <button class="btn-signup btn-primary btn"><a href="/signup">Sign up</a></button>
-  </div>
-  <div class="container" ng-show="isLoggedIn()">
-    <h1>Dashboard</h1>
-    <p class="lead">What would you like to do?</p>
-    <button class="btn-dashboard btn-large btn-primary btn">New Poll</button>
-    <button class="btn-dashboard btn-large btn-primary btn">My Polls</button>
-  </div>
-</header>
-
 <div class="container">
   <div class="row">
 
@@ -22,6 +7,17 @@
       <h2>{{$routeParams.question}}</h2>
       <h3>by {{$routeParams.username}}</h3>
       <h2>Testing</h2>
+      <h1>{{$pollData}}</h1>
+    </div>
+
+    <div class="col-lg-4 col-md-4">
+      <form>
+        <ul class="list-group">
+          <li class="list-group-item" ng-repeat="option in $pollData.poll_options track by $index">
+            <input type="radio" name="option" value="$index"> {{option}}
+          </li>
+        </ul>
+      </form>
     </div>
 
   </div>
