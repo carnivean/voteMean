@@ -1,0 +1,7 @@
+.btn-dashboard > a {
+  color: #eee;
+}
+
+.btn-dashboard > a:hover {
+  color: #ccc;
+}

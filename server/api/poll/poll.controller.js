@@ -64,6 +64,28 @@ exports.create = function(req, res) {
   });
 };
 
+exports.incByNameAndID = function(req, res) {
+  var usr = req.params.username;
+  var name = req.params.question;
+  var index = req.params.poll_option;
+  console.log('usr:' + usr + ' name:' + name + " index:" + index);
+
+  Poll.findOne({
+    'userName' : usr,
+    'question': name
+  }, function (err, doc){
+    if (!doc) {
+      return res.status(404).send('Not Found');
+    }
+    // console.log(doc);
+    console.log(doc.poll_results[index]);
+    doc.poll_results[index]++;
+    doc.markModified('poll_results');
+    doc.save();
+    return res.json(doc);
+  });
+};
+
 // Updates an existing thing in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }

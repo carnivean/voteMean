@@ -14,6 +14,8 @@ angular.module('meanVoteApp')
     $scope.selectedVote = 0;
     var apiString;
 
+    $scope.voted = false;
+
     var submitPoll = function() {
       apiString = '/api/polls/' + $scope.$routeParams.username + '/' + $scope.$routeParams.question;
       $log.log('apiString: ' + apiString);
@@ -30,6 +32,8 @@ angular.module('meanVoteApp')
     $scope.submitVote = function() {
       $scope.$pollData.poll_results[$scope.selectedVote]++;
       console.log($scope.$pollData);
+
+
     };
 
     submitPoll();
