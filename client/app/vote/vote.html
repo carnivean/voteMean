@@ -4,31 +4,39 @@
 <div class="container">
   <div class="row div-polls">
 
-    <!-- The Div shown if logged in-->
-    <div class="col-lg-4 col-md-4 col-sm-12">
-      <h2>{{$routeParams.question}}</h2>
-      <h3>by {{$routeParams.username}}</h3>
-    </div>
-
-    <div class="text-center col-lg-4 col-md-4">
-      <form ng-submit="submitVote()">
-        <ul class="list-group">
-          <li class="list-group-item text-left" ng-repeat="option in $pollData.poll_options track by $index">
-            <input type="radio" name="option" ng-model="$parent.selectedVote" value="{{$index}}">
-            {{option}}
-          </li>
-        </ul>
-        <button type="submit" class="btn-submit btn-primary btn">Vote</button>
-      </form>
-    </div>
-
-    <div class="col-lg-4 col-md-4">
-      <div ng-hide="$polldata.comments.length === 0">
-        <p ng-repeat="comment in $pollData.comments">{{comment.text}}<br>{{comment.userName}}</p>
+    <div ng-hide="voted">
+      <div class="col-lg-4 col-md-4 col-sm-12">
+        <h2>{{$routeParams.question}}</h2>
+        <h3>by {{$routeParams.username}}</h3>
       </div>
 
-      <div ng-show="$pollData.comments.length === 0">
-        Sorry, no comments yet.
+      <div class="text-center col-lg-4 col-md-4">
+        <form ng-submit="submitVote()">
+          <ul class="list-group">
+            <li class="list-group-item text-left" ng-repeat="option in $pollData.poll_options track by $index">
+              <input type="radio" name="option" ng-model="$parent.selectedVote" value="{{$index}}">
+              {{option}}
+            </li>
+          </ul>
+          <button type="submit" class="btn-submit btn-primary btn">Vote</button>
+        </form>
+      </div>
+
+      <div class="col-lg-4 col-md-4">
+        <div ng-hide="$polldata.comments.length === 0">
+          <p ng-repeat="comment in $pollData.comments">{{comment.text}}<br>{{comment.userName}}</p>
+        </div>
+
+        <div ng-show="$pollData.comments.length === 0">
+          Sorry, no comments yet.
+        </div>
+      </div>
+    </div>
+
+    <div ng-show="voted">
+      <div class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-12">
+        <h3>Thank you for your vote.</h3>
+        <a href="/">Continue to the results</a>
       </div>
     </div>
 
