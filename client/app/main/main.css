@@ -55,3 +55,12 @@
 .btn-signup {
   width: 200px !important;
 }
+
+.btn-dashboard {
+  background-color: #5cb85c;
+  color: #eee;
+}
+
+.btn-dashboard:hover {
+  background-color: #4cb85c;
+}
