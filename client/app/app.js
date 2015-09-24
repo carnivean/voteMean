@@ -13,6 +13,11 @@ angular.module('meanVoteApp', [
         templateUrl: 'app/vote/vote.html',
         controller: 'VoteCtrl'
       })
+      .when('/polls', {
+        templateUrl: 'app/polls/polls.html',
+        controller: 'PollsCtrl',
+        authenticated: 'true'
+      })
       .otherwise({
         redirectTo: '/'
       });
