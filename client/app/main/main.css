@@ -32,3 +32,26 @@
 .navbar-text {
     margin-left: 15px;
 }
+
+.btn-signup {
+  color: #eee;
+  background-color: #5cb85c;
+}
+
+.btn-signup:hover {
+  color: #eee;
+  background-color: #4cb85c;
+}
+
+.btn-signup > a {
+  color: #eee;
+  background-color: #5cb85c;
+}
+
+.btn-signup > a:hover {
+  background-color: #4cb85c;
+}
+
+.btn-signup {
+  width: 200px !important;
+}

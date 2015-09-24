@@ -17,7 +17,9 @@
       "bootstrap": true,
       "uibootstrap": true,
       "mongoose": true,
-      "auth": true
+      "auth": true,
+      "oauth": true,
+      "twitterAuth": true
     }
   },
   "generator-ng-component": {
