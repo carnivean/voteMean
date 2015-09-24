@@ -11,6 +11,8 @@ angular.module('meanVoteApp')
       'link': '/'
     }];
 
+    $scope.options = ['Coke', 'Pepsi'];
+
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;

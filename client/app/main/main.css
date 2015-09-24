@@ -64,3 +64,10 @@
 .btn-dashboard:hover {
   background-color: #4cb85c;
 }
+
+.input-poll {
+  max-width: 300px;
+  margin: 0 auto;
+  text-align: left;
+}
+}
