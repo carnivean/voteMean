@@ -9,8 +9,9 @@ var controller = require('./poll.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
-router.get('/:id', controller.showById);
-router.get('/:user/:pollname', controller.showByNameAndID);
+// router.get('/:id', controller.showById);
+router.get('/:username', controller.showByUser);
+router.get('/:username/:question', controller.showByNameAndID);
 router.post('/', controller.create);
 router.put('/:id', controller.update);
 router.patch('/:id', controller.update);

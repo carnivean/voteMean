@@ -9,6 +9,10 @@ angular.module('meanVoteApp', [
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
+      .when('/:username/:question', {
+        templateUrl: 'app/vote/vote.html',
+        controller: 'VoteCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

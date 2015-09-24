@@ -32,26 +32,20 @@ exports.showById = function(req, res) {
   });
 };
 
-/*
-// Get Poll by pollname
-exports.showByPollName = function(req, res) {
-  var name = req.params.pollname;
-  Poll.findOne({'question': name}, function(err, poll) {
-    if(err) {
-      return handleError(res, err);
-    }
-    if (!poll) {
-      return res.status(404).send('Not Found');
-    }
+exports.showByUser = function (req, res) {
+  var usr = req.params.user;
+  Poll.find({'username': usr}, function (err, poll) {
+    if(err) { return handleError(res, err); }
+    if(!poll) { return res.status(404).send('Not Found'); }
     return res.json(poll);
   });
-}; */
+};
 
 // Get Poll by name and id
 exports.showByNameAndID = function(req, res) {
   var usr = req.params.user;
-  var name = req.params.pollname;
-  Poll.findOne({'question': name, 'username': usr}, function(err, poll) {
+  var name = req.params.question;
+  Poll.findOne({'username': usr, 'question': name}, function(err, poll) {
     if(err) {
       return handleError(res, err);
     }
