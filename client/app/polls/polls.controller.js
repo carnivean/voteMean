@@ -5,6 +5,11 @@
 angular.module('meanVoteApp')
   .controller('PollsCtrl', function ($scope, $http, Auth, $route, $location, $routeParams, $log) {
 
+    // redirect if not logged in
+    if (!Auth.isLoggedIn()) {
+      $location.path('/login');
+    }
+
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
