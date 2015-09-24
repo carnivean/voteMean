@@ -4,7 +4,7 @@
     <h2>New Poll</h2>
     <h3>Name your Poll.</h3>
     <div class="form-group">
-      <input id="pollname" ng-model="poll.name" name="pollname" placeholder="What is your favorite brand?" class="input-poll form-control"
+      <input id="pollname" ng-model="pollname" name="pollname" placeholder="What is your favorite brand?" class="input-poll form-control"
              required>
       <h4>Options</h4>
       <input ng-repeat="ph in placeholders track by $index" placeholder="{{ph}}" ng-model="options[$index]"
@@ -15,6 +15,7 @@
       <button class="btn-polls btn-primary btn" ng-click="submitPoll()">Submit</button>
     </div>
     <div>
+      <p>{{pollname}}</p>
       <p ng-repeat="option in options track by $index">{{option}}</p>
     </div>
 

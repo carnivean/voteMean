@@ -5,16 +5,23 @@
 'use strict';
 
 angular.module('meanVoteApp')
-  .controller('NewPollCtrl', function ($scope, $location, Auth, $log) {
+  .controller('NewPollCtrl', function ($scope, $location, Auth, $log, $http) {
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
     }];
 
-    $scope.placeholders = ['Coke', 'Pepsi'];
-    $scope.options = ["", ""];
+    $scope.placeholders = [];
+    $scope.options = [];
 
+    var resetValues = function() {
+      $scope.placeholders.push('Coke');
+      $scope.placeholders.push('Pepsi');
+      $scope.options.push('');
+      $scope.options.push('');
+    };
 
+    resetValues();
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
@@ -28,19 +35,29 @@ angular.module('meanVoteApp')
 
     $scope.submitPoll = function() {
         var newDbEntry = {};
-        newDbEntry.Owner = Auth.getCurrentUser;
-        var data = {};
+        newDbEntry.userName = Auth.getCurrentUser().name;
+        newDbEntry.question = $scope.pollname;
+        newDbEntry.comments = [];
+        newDbEntry.poll_results = [];
+        newDbEntry.poll_options = [];
+
         for (var index = 0; index < $scope.options.length; index++) {
-          data[$scope.options[index]] = 0;
+          newDbEntry.poll_results.push(0);
+          newDbEntry.poll_options.push($scope.options[index]);
         }
 
-        newDbEntry.options = data;
+        $http.post('/api/polls', newDbEntry)
+          .success(function(data) {
+            resetValues();
+            $scope.page = 'pollposted';
+            console.log(data);
+          })
+          .error(function(data) {
+            console.log('Error: ' + data);
+          });
 
         // debug purposes
         $log.log(newDbEntry);
-        $log.log(newDbEntry.options);
-
-        $scope.page = 'pollposted';
     };
 
     $scope.isActive = function(route) {
