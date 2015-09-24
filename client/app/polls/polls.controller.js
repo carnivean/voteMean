@@ -16,7 +16,7 @@ angular.module('meanVoteApp')
     var apiString;
 
     var getPolls = function() {
-      apiString = '/api/polls/' + Auth.getCurrentUser();
+      apiString = '/api/polls/' + Auth.getCurrentUser().name;
       $log.log('apiString: ' + apiString);
 
       $http.get(apiString).success(function(data) {

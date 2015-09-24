@@ -17,7 +17,7 @@ angular.module('meanVoteApp', [
         templateUrl: 'app/polls/polls.html',
         controller: 'PollsCtrl'
       }).when('/result/:username/:question', {
-        templateUrl: '',
+        templateUrl: 'app/result/result.html',
         controller: 'ResultCtrl'
       })
       .otherwise({

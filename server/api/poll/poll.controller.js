@@ -33,8 +33,8 @@ exports.showById = function(req, res) {
 };
 
 exports.showByUser = function (req, res) {
-  var usr = req.params.user;
-  Poll.find({'username': usr}, function (err, poll) {
+  var usr = req.params.username;
+  Poll.find({'userName': usr}, function (err, poll) {
     if(err) { return handleError(res, err); }
     if(!poll) { return res.status(404).send('Not Found'); }
     return res.json(poll);
@@ -43,9 +43,9 @@ exports.showByUser = function (req, res) {
 
 // Get Poll by name and id
 exports.showByNameAndID = function(req, res) {
-  var usr = req.params.user;
+  var usr = req.params.username;
   var name = req.params.question;
-  Poll.findOne({'username': usr, 'question': name}, function(err, poll) {
+  Poll.findOne({'userName': usr, 'question': name}, function(err, poll) {
     if(err) {
       return handleError(res, err);
     }
