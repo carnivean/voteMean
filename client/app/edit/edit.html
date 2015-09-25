@@ -3,9 +3,34 @@
 <div ng-include="'components/header/header.html'"></div>
 
 <div>
-  Edit Testing
+  <div ng-show="page==='editPoll'" class="text-center">
 
-  {{$page}}
+    <h2>Editing Poll</h2>
+    <h3>Name your Poll.</h3>
+    <h3>{{$polldata}}</h3>
+    <div class="form-group">
+      <input id="pollname" ng-model="$pollData.question" name="pollname" placeholder="What is your favorite brand?" class="input-poll form-control"
+             allow-pattern="(\d|[a-z]| |\,|\.)" required>
+      <h4>Options</h4>
+      <div ng-repeat="poll_options in $pollData.poll_options track by $index">
+        <input placeholder="" ng-model="$pollData.poll_options[$index]" class="input-poll input-group form-control"
+               allow-pattern="(\d|[a-z]| )"><p class="input-p">{{$pollData.poll_results[$index]}} votes</p>
+      </div>
+
+    </div>
+    <div>
+      <button class="btn-polls btn-primary btn" ng-click="addOption()">More Options</button><br>
+      <button class="btn-polls btn-primary btn" ng-click="submitPoll()">Submit</button>
+    </div>
+
+  </div>
+  <div ng-show="page==='pollposted'" class="text-center">
+    <h2>Success!</h2>
+    <h3>Your poll was changed. You can share it here:</h3><br>
+    <a href="/{{name}}/{{pollname}}">{{loc}}{{name}}/{{pollname}}</a><br>
+    <h3>The result is available here:</h3><br>
+    <a href="/{{name}}/{{pollname}}/result">{{loc}}{{name}}/{{pollname}}/result</a><br>
+  </div>
 </div>
 
 

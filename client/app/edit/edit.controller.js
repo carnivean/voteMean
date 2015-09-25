@@ -14,12 +14,28 @@ angular.module('meanVoteApp')
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
+    $scope.page = "editPoll";
+
     // redirect if not logged in
     if (!Auth.isLoggedIn()) {
       $location.path('/login');
     }
 
-    $scope.page = 'edit Testing;'
+    var apiString;
+
+    var getPoll = function() {
+      apiString = '/api/polls/' + $scope.$routeParams.username + '/' + $scope.$routeParams.question;
+      $log.log('apiString: ' + apiString);
+
+      $http.get(apiString).success(function(data) {
+        $scope.$pollData = data;
+        console.log('successful:');
+        console.log(data);
+      }).error(function(data) {
+        console.log('Error: ' + data);
+      });
+    };
+    getPoll();
   });
 
 

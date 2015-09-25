@@ -69,6 +69,13 @@
   max-width: 300px;
   margin: 0 auto;
   text-align: left;
+  display: inline;
+  padding-right: 10px;
+}
+
+.input-p {
+  margin-left: 10px;
+  display: inline;
 }
 
 .btn-polls {
