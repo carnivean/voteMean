@@ -4,7 +4,7 @@
 
 
 angular.module('meanVoteApp')
-  .controller('EditCtrl', function ($scope, $http, Auth, $route, $location, $routeParams, $log) {
+  .controller('DeleteCtrl', function ($scope, $http, Auth, $route, $location, $routeParams, $log) {
     $log.log('edit controller');
 
     $scope.$routeParams = $routeParams;
@@ -14,7 +14,7 @@ angular.module('meanVoteApp')
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
-    $scope.page = "editPoll";
+    $scope.page = "deletePoll";
 
     // redirect if not logged in
     if (!Auth.isLoggedIn()) {
@@ -38,11 +38,6 @@ angular.module('meanVoteApp')
       });
     };
 
-    $scope.addOption = function() {
-      $scope.$pollData.poll_options.push('New Option');
-      $scope.$pollData.poll_results.push(0);
-    };
-
     $scope.submitPoll = function() {
       var apiString = '/api/polls/' + $scope.$pollData._id;
       $http.put(apiString, $scope.$pollData)
@@ -50,7 +45,7 @@ angular.module('meanVoteApp')
           console.log('Success Put!');
           console.log(data);
           $scope.page = "pollUpdated";
-      })
+        })
         .error(function(data) {
           console.log('Error:'  + data);
         });
