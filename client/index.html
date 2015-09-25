@@ -14,6 +14,7 @@
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+      <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -25,11 +26,11 @@
       <link rel="stylesheet" href="app/delete/delete.css">
       <link rel="stylesheet" href="app/edit/edit.css">
       <link rel="stylesheet" href="app/main/main.css">
+      <link rel="stylesheet" href="app/overview/overview.css">
       <link rel="stylesheet" href="app/polls/polls.css">
       <link rel="stylesheet" href="app/vote/vote.css">
       <link rel="stylesheet" href="components/header/header.css">
       <link rel="stylesheet" href="components/modal/modal.css">
-      <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
       <!-- endinjector -->
     <!-- endbuild -->
   </head>
@@ -64,11 +65,11 @@
       <!-- bower:js -->
       <script src="bower_components/jquery/dist/jquery.js"></script>
       <script src="bower_components/angular/angular.js"></script>
-      <script src="bower_components/angular-resource/angular-resource.js"></script>
-      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-      <script src="bower_components/angular-route/angular-route.js"></script>
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+      <script src="bower_components/angular-resource/angular-resource.js"></script>
+      <script src="bower_components/angular-route/angular-route.js"></script>
+      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
@@ -88,6 +89,7 @@
           <script src="app/edit/edit.controller.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
+          <script src="app/overview/overview.controller.js"></script>
           <script src="app/polls/polls.controller.js"></script>
           <script src="app/result/result.controller.js"></script>
           <script src="app/vote/vote.controller.js"></script>
