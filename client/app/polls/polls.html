@@ -7,7 +7,10 @@
     <!-- The Div shown if logged in-->
     <div class="col-lg-offset-4 col-md-offset-4 col-lg-4 col-md-4 col-sm-12">
       <ul class="list-group">
-        <li class="list-group-item" ng-repeat="poll in $pollsData track by $index"><a href="/{{getCurrentUser().name}}/{{poll.question}}">{{poll.question}}</a></li>
+        <li class="list-group-item" ng-repeat="poll in $pollsData track by $index">
+          <a href="/{{getCurrentUser().name}}/{{poll.question}}">{{poll.question}}</a> -
+          <a href="/{{getCurrentUser().name}}/{{poll.question}}/result">Result</a>
+        </li>
       </ul>
     </div>
 
