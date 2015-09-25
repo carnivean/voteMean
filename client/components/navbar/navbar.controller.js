@@ -5,7 +5,11 @@ angular.module('meanVoteApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
-    }];
+    },
+      {
+        'title': 'Overview',
+        'link': '/overview'
+      }];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
