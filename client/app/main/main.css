@@ -82,3 +82,17 @@
   width: 300px;
   margin-bottom: 5px;
 }
+
+.btn-invis {
+  background: transparent;
+  border: none !important;
+}
+
+.div-inline {
+  display: inline;
+}
+
+.div-right {
+  position: absolute; /*or fixed*/
+  right: 0x;
+}
