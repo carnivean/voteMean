@@ -92,8 +92,10 @@ exports.update = function(req, res) {
   Poll.findById(req.params.id, function (err, poll) {
     if (err) { return handleError(res, err); }
     if(!poll) { return res.status(404).send('Not Found'); }
-    var updated = _.merge(poll, req.body);
+    var updated = _.extend(poll, req.body);
+    poll.set
     updated.save(function (err) {
+      console.log("saving updated doc... I hope so...");
       if (err) { return handleError(res, err); }
       return res.status(200).json(poll);
     });
