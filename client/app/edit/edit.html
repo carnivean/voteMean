@@ -24,12 +24,14 @@
     </div>
 
   </div>
-  <div ng-show="page==='pollposted'" class="text-center">
+  <div ng-show="page==='pollUpdated'" class="text-center">
     <h2>Success!</h2>
     <h3>Your poll was changed. You can share it here:</h3><br>
-    <a href="/{{name}}/{{pollname}}">{{loc}}{{name}}/{{pollname}}</a><br>
+    <a href="/{{$routeParams.username}}/{{$routeParams.question}}">
+      {{$loc}}{{$routeParams.username}}/{{$routeParams.question}}</a><br>
     <h3>The result is available here:</h3><br>
-    <a href="/{{name}}/{{pollname}}/result">{{loc}}{{name}}/{{pollname}}/result</a><br>
+    <a href="/{{$routeParams.username}}/{{$routeParams.question}}/result">
+      {{$loc}}{{$routeParams.username}}/{{$routeParams.question}}/result</a><br>
   </div>
 </div>
 

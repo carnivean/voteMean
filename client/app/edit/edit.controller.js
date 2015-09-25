@@ -8,7 +8,7 @@ angular.module('meanVoteApp')
     $log.log('edit controller');
 
     $scope.$routeParams = $routeParams;
-    $scope.$location = $location;
+    $scope.$loc = $location.host() + ':' +  $location.port() + '/';
 
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
@@ -35,6 +35,25 @@ angular.module('meanVoteApp')
         console.log('Error: ' + data);
       });
     };
+
+    $scope.addOption = function() {
+      $scope.$pollData.poll_options.push('New Option');
+      $scope.$pollData.poll_results.push(0);
+    };
+
+    $scope.submitPoll = function() {
+      var apiString = '/api/polls/' + $scope.$pollData._id;
+      $http.put(apiString, $scope.$pollData)
+        .success(function(data) {
+          console.log('Success Put!');
+          console.log(data);
+          $scope.page = "pollUpdated";
+      })
+        .error(function(data) {
+          console.log('Error:'  + data);
+        });
+    };
+
     getPoll();
   });
 
