@@ -22,6 +22,9 @@ angular.module('meanVoteApp', [
       }).when('/:username/:question/edit', {
         templateUrl: 'app/edit/edit.html',
         controller: 'EditCtrl'
+      }).when('/:username/:question/delete', {
+        templateUrl: 'app/delete/delete.html',
+        controller: 'DeleteCtrl'
       })
       .otherwise({
         redirectTo: '/'

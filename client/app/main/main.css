@@ -96,3 +96,8 @@
   position: absolute; /*or fixed*/
   right: 0;
 }
+
+.div-right-2 {
+  position: absolute; /*or fixed*/
+  right: 20px;
+}

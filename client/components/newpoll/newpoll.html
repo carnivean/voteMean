@@ -7,8 +7,10 @@
       <input id="pollname" ng-model="pollname" name="pollname" placeholder="What is your favorite brand?" class="input-poll form-control"
              allow-pattern="(\d|[a-z]| |\,|\.)" required>
       <h4>Options</h4>
-      <input ng-repeat="ph in placeholders track by $index" placeholder="{{ph}}" ng-model="options[$index]"
-             class="input-poll form-control" allow-pattern="(\d|[a-z]| )" required>
+      <div ng-repeat="ph in placeholders track by $index">
+        <input placeholder="{{ph}}" ng-model="options[$index]"
+               class="input-poll form-control" allow-pattern="(\d|[a-z]| )" required>
+      </div>
     </div>
     <div>
       <button class="btn-polls btn-primary btn" ng-click="addOption()">More Options</button><br>

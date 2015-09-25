@@ -12,14 +12,20 @@
             <a href="/{{getCurrentUser().name}}/{{poll.question}}">{{poll.question}}</a> -
             <a href="/{{getCurrentUser().name}}/{{poll.question}}/result">Result</a>
           </div>
-          <div class="text-right div-inline div-right">
+          <div class="text-right div-inline div-right-2">
             <a href="/{{getCurrentUser().name}}/{{poll.question}}/edit" class="text-right">
               <button class="btn-invis">
                 <i class="fa fa-pencil fa-lg"></i>
               </button>
             </a>
           </div>
-
+          <div class="text-right div-inline div-right">
+            <a href="/{{getCurrentUser().name}}/{{poll.question}}/delete" class="text-right">
+              <button class="btn-invis">
+                <i class="fa fa-trash-o fa-lg"></i>
+              </button>
+            </a>
+          </div>
         </li>
       </ul>
     </div>

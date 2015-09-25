@@ -27,24 +27,25 @@ angular.module('meanVoteApp')
 
     var getPoll = function() {
       apiString = '/api/polls/' + $scope.$routeParams.username + '/' + $scope.$routeParams.question;
-      $log.log('apiString: ' + apiString);
 
       $http.get(apiString).success(function(data) {
         $scope.$pollData = data;
-        console.log('successful:');
-        console.log(data);
+        deletePoll();
       }).error(function(data) {
         console.log('Error: ' + data);
       });
     };
 
-    $scope.submitPoll = function() {
+    var deletePoll = function() {
+      console.log('deleting');
       var apiString = '/api/polls/' + $scope.$pollData._id;
-      $http.put(apiString, $scope.$pollData)
+      console.log('ApiString for deleting: ' + apiString);
+
+      $http.delete(apiString, $scope.$pollData)
         .success(function(data) {
-          console.log('Success Put!');
+          console.log('Success Delete!');
           console.log(data);
-          $scope.page = "pollUpdated";
+          $scope.page = "pollDeleted";
         })
         .error(function(data) {
           console.log('Error:'  + data);
