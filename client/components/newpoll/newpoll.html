@@ -14,10 +14,6 @@
       <button class="btn-polls btn-primary btn" ng-click="addOption()">More Options</button><br>
       <button class="btn-polls btn-primary btn" ng-click="submitPoll()">Submit</button>
     </div>
-    <div>
-      <p>{{pollname}}</p>
-      <p ng-repeat="option in options track by $index">{{option.text}}</p>
-    </div>
 
   </div>
   <div ng-show="page==='pollposted'" class="text-center">
