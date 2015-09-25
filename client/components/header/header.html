@@ -7,7 +7,7 @@
   <div class="container" ng-show="isLoggedIn()">
     <h1>Dashboard</h1>
     <p class="lead">What would you like to do?</p>
-    <a href="/"><button class="btn-dashboard btn-large btn-primary btn">New Poll</button></a>
+    <a href="/"  ng-click="returnToIndex()"><button class="btn-dashboard btn-large btn-primary btn">New Poll</button></a>
     <a href="/polls"><button class="btn-dashboard btn-large btn-primary btn">My Polls</button></a>
   </div>
 </header>

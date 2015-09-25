@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('meanVoteApp')
-  .controller('MainCtrl', function ($scope, $http, Auth, $route, $location, $routeParams) {
+  .controller('MainCtrl', function ($scope, $rootScope, $http, Auth, $route, $location, $routeParams) {
 
     $scope.$route = $route;
     $scope.$location = $location;
@@ -11,5 +11,10 @@ angular.module('meanVoteApp')
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
-    $scope.page = "newpoll";
+    $scope.returnToIndex = function() {
+      $rootScope.page = "newpoll";
+      console.log('resetting');
+    }
+
+    $scope.returnToIndex();
   });

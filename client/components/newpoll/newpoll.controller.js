@@ -5,7 +5,7 @@
 'use strict';
 
 angular.module('meanVoteApp')
-  .controller('NewPollCtrl', function ($scope, $location, Auth, $log, $http) {
+  .controller('NewPollCtrl', function ($scope, $rootScope, $location, Auth, $log, $http) {
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
@@ -59,7 +59,7 @@ angular.module('meanVoteApp')
             $scope.name = newDbEntry.userName;
             $scope.loc  = $location.absUrl();
 
-            $scope.page = 'pollposted';
+            $rootScope.page = 'pollposted';
 
             console.log(data);
           })
