@@ -17,7 +17,9 @@
     </div>
 
     <div class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-12"  ng-show="loaded">
-      <canvas id="skills" width="300" height="300"></canvas>
+      <canvas id="bar" class="chart chart-bar"
+              chart-data="votes" chart-labels="labels">
+      </canvas>
     </div>
   </div>
 </div>

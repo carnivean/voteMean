@@ -12,40 +12,31 @@ angular.module('meanVoteApp')
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
-    $scope.pieData = [
-      {
-        value: 25,
-        label: 'Java',
-        color: '#811BD6'
-      },
-      {
-        value: 10,
-        label: 'Scala',
-        color: '#9CBABA'
-      },
-      {
-        value: 30,
-        label: 'PHP',
-        color: '#D18177'
-      },
-      {
-        value : 35,
-        label: 'HTML',
-        color: '#6AE128'
-      }
-    ];
-
-    var context = document.getElementById('skills').getContext('2d');
-    var skillsChart = new Chart(context).Pie($scope.pieData);
-
     var getResult = function() {
       var apiString = '/api/polls/' + $scope.$routeParams.username + '/' + $scope.$routeParams.question;
-      $log.log('apiString: ' + apiString);
 
       $http.get(apiString).success(function(data) {
         $scope.$pollData = data;
-        console.log('successful:');
-        console.log(data);
+
+        $scope.labels = [];
+        $scope.series = ['Votes'];
+        $scope.votes = [[]];
+
+        for (var index = 0; index < data.poll_options.length; index++) {
+          $scope.labels.push(data.poll_options[index]);
+          $scope.votes[0].push(data.poll_results[index]);
+        }
+
+        /*
+         $scope.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+         $scope.series = ['Series A', 'Series B'];
+
+         $scope.data = [
+         [65, 59, 80, 81, 56, 55, 40],
+         [28, 48, 40, 19, 86, 27, 90]
+         ];
+         */
+
         $scope.loaded = true;
       }).error(function(data) {
         console.log('Error: ' + data);
