@@ -10,7 +10,7 @@
         <li class="list-group-item" ng-repeat="poll in $pollsData track by $index">
           <div class="div-inline">
             <a href="/{{getCurrentUser().name}}/{{poll.question}}">{{poll.question}}</a> -
-            <a href="/{{getCurrentUser().name}}/{{poll.question}}/result">Result</a>
+            <a href="/{{getCurrentUser().name}}/{{poll.question}}/result"><i class="fa fa-bar-chart"></i></a>
           </div>
           <div class="text-right div-inline div-right-2">
             <a href="/{{getCurrentUser().name}}/{{poll.question}}/edit" class="text-right">
