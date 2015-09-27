@@ -1,28 +1,35 @@
-<div class="text-center col-sm-12 col-lg-12 col-md-12"  ng-controller="NewPollCtrl">
+<div class="text-center col-sm-12 col-lg-12 col-md-12" ng-controller="NewPollCtrl">
 
   <div ng-show="page==='newpoll'">
 
     <h2>New Poll</h2>
+
     <h3>Name your Poll.</h3>
+
     <div class="form-group">
-      <input id="pollname" ng-model="pollname" name="pollname" placeholder="What is your favorite brand?" class="input-poll form-control"
+      <input id="pollname" ng-model="pollname" name="pollname" placeholder="What is your favorite brand?"
+             class="input-poll form-control"
              allow-pattern="(\d|[a-z]| |\,|\.)" required>
       <h4>Options</h4>
+
       <div ng-repeat="ph in placeholders track by $index">
         <input placeholder="{{ph}}" ng-model="options[$index]"
                class="input-poll form-control" allow-pattern="(\d|[a-z]| )" required>
       </div>
     </div>
     <div>
-      <button class="btn-polls btn-primary btn" ng-click="addOption()">More Options</button><br>
+      <button class="btn-polls btn-primary btn" ng-click="addOption()">More Options</button>
+      <br>
       <button class="btn-polls btn-primary btn" ng-click="submitPoll()">Submit</button>
     </div>
 
   </div>
   <div ng-show="page==='pollposted'" class="text-center">
     <h2>Success!</h2>
+
     <h3>Your poll was created. You can share it here:</h3><br>
     <a href="/{{name}}/{{pollname}}">{{loc}}{{name}}/{{pollname}}</a><br>
+
     <h3>The result is available here:</h3><br>
     <a href="/{{name}}/{{pollname}}/result">{{loc}}{{name}}/{{pollname}}/result</a><br>
   </div>

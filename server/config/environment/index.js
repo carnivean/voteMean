@@ -4,7 +4,7 @@ var path = require('path');
 var _ = require('lodash');
 
 function requiredProcessEnv(name) {
-  if(!process.env[name]) {
+  if (!process.env[name]) {
     throw new Error('You must set the ' + name + ' environment variable');
   }
   return process.env[name];
@@ -45,10 +45,10 @@ var all = {
   },
 
   twitter: {
-    clientID:     process.env.TWITTER_ID || 'id',
+    clientID: process.env.TWITTER_ID || 'id',
     clientSecret: process.env.TWITTER_SECRET || 'secret',
-    callbackURL:  (process.env.DOMAIN || '') + '/auth/twitter/callback'
-  },
+    callbackURL: (process.env.DOMAIN || '') + '/auth/twitter/callback'
+  }
 
 };
 

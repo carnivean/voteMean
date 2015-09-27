@@ -14,7 +14,7 @@ angular.module('meanVoteApp')
     $scope.placeholders = [];
     $scope.options = [];
 
-    var resetValues = function() {
+    var resetValues = function () {
       $scope.placeholders.push('Coke');
       $scope.placeholders.push('Pepsi');
       $scope.options.push('');
@@ -28,50 +28,49 @@ angular.module('meanVoteApp')
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
-    $scope.addOption = function() {
-        $scope.placeholders.push('New Option');
-        $scope.options.push('');
+    $scope.addOption = function () {
+      $scope.placeholders.push('New Option');
+      $scope.options.push('');
     };
 
     var newDbEntry;
 
-    $scope.submitPoll = function() {
-        newDbEntry = {};
-        newDbEntry.userName = Auth.getCurrentUser().name;
-        newDbEntry.question = $scope.pollname;
-        newDbEntry.comments = [];
-        newDbEntry.poll_results = [];
-        newDbEntry.poll_options = [];
+    $scope.submitPoll = function () {
+      newDbEntry = {};
+      newDbEntry.userName = Auth.getCurrentUser().name;
+      newDbEntry.question = $scope.pollname;
+      newDbEntry.comments = [];
+      newDbEntry.poll_results = [];
+      newDbEntry.poll_options = [];
 
-        for (var index = 0; index < $scope.options.length; index++) {
-          newDbEntry.poll_results.push(0);
-          newDbEntry.poll_options.push($scope.options[index]);
-        }
+      for (var index = 0; index < $scope.options.length; index++) {
+        newDbEntry.poll_results.push(0);
+        newDbEntry.poll_options.push($scope.options[index]);
+      }
 
 
+      $http.post('/api/polls', newDbEntry)
+        .success(function (data) {
+          resetValues();
 
-        $http.post('/api/polls', newDbEntry)
-          .success(function(data) {
-            resetValues();
+          // set the variables for rendering the continue view
+          $scope.pollname = newDbEntry.question;
+          $scope.name = newDbEntry.userName;
+          $scope.loc = $location.absUrl();
 
-            // set the variables for rendering the continue view
-            $scope.pollname = newDbEntry.question;
-            $scope.name = newDbEntry.userName;
-            $scope.loc  = $location.absUrl();
+          $rootScope.page = 'pollposted';
 
-            $rootScope.page = 'pollposted';
+          console.log(data);
+        })
+        .error(function (data) {
+          console.log('Error: ' + data);
+        });
 
-            console.log(data);
-          })
-          .error(function(data) {
-            console.log('Error: ' + data);
-          });
-
-        // debug purposes
-        $log.log(newDbEntry);
+      // debug purposes
+      $log.log(newDbEntry);
     };
 
-    $scope.isActive = function(route) {
+    $scope.isActive = function (route) {
       return route === $location.path();
     };
   });

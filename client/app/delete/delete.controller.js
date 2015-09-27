@@ -8,7 +8,7 @@ angular.module('meanVoteApp')
     $log.log('edit controller');
 
     $scope.$routeParams = $routeParams;
-    $scope.$loc = $location.host() + ':' +  $location.port() + '/';
+    $scope.$loc = $location.host() + ':' + $location.port() + '/';
 
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
@@ -25,30 +25,30 @@ angular.module('meanVoteApp')
 
     var apiString;
 
-    var getPoll = function() {
+    var getPoll = function () {
       apiString = '/api/polls/' + $scope.$routeParams.username + '/' + $scope.$routeParams.question;
 
-      $http.get(apiString).success(function(data) {
+      $http.get(apiString).success(function (data) {
         $scope.$pollData = data;
         deletePoll();
-      }).error(function(data) {
+      }).error(function (data) {
         console.log('Error: ' + data);
       });
     };
 
-    var deletePoll = function() {
+    var deletePoll = function () {
       console.log('deleting');
       var apiString = '/api/polls/' + $scope.$pollData._id;
       console.log('ApiString for deleting: ' + apiString);
 
       $http.delete(apiString, $scope.$pollData)
-        .success(function(data) {
+        .success(function (data) {
           console.log('Success Delete!');
           console.log(data);
           $scope.page = "pollDeleted";
         })
-        .error(function(data) {
-          console.log('Error:'  + data);
+        .error(function (data) {
+          console.log('Error:' + data);
         });
     };
 

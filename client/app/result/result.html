@@ -8,7 +8,7 @@
       <h3>Please wait, loading data...</h3>
     </div>
 
-    <div class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-12"  ng-show="loaded">
+    <div class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-12" ng-show="loaded">
       <ul class="list-group">
         <li ng-repeat="option in $pollData.poll_options track by $index" class="list-group-item">
           {{$pollData.poll_options[$index]}} - {{$pollData.poll_results[$index]}} votes
@@ -16,7 +16,7 @@
       </ul>
     </div>
 
-    <div class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-12"  ng-show="loaded">
+    <div class="col-lg-offset-4 col-lg-4 col-md-offset-4 col-md-4 col-sm-12" ng-show="loaded">
       <canvas id="bar" class="chart chart-bar"
               chart-data="votes" chart-labels="labels">
       </canvas>

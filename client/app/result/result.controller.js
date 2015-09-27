@@ -3,7 +3,7 @@
  */
 
 angular.module('meanVoteApp')
-  .controller('ResultCtrl', function ($scope, $http, Auth, $route, $location, $routeParams, $log) {
+  .controller('ResultCtrl', function ($scope, $http, Auth, $route, $location, $routeParams) {
     console.log($routeParams);
     $scope.$routeParams = $routeParams;
     $scope.$location = $location;
@@ -12,10 +12,10 @@ angular.module('meanVoteApp')
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
-    var getResult = function() {
+    var getResult = function () {
       var apiString = '/api/polls/' + $scope.$routeParams.username + '/' + $scope.$routeParams.question;
 
-      $http.get(apiString).success(function(data) {
+      $http.get(apiString).success(function (data) {
         $scope.$pollData = data;
 
         $scope.labels = [];
@@ -38,7 +38,7 @@ angular.module('meanVoteApp')
          */
 
         $scope.loaded = true;
-      }).error(function(data) {
+      }).error(function (data) {
         console.log('Error: ' + data);
       });
     };

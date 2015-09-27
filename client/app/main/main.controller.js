@@ -11,10 +11,10 @@ angular.module('meanVoteApp')
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
-    $scope.returnToIndex = function() {
+    $scope.returnToIndex = function () {
       $rootScope.page = "newpoll";
       console.log('resetting');
-    }
+    };
 
     $scope.returnToIndex();
   });

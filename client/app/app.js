@@ -49,8 +49,8 @@ angular.module('meanVoteApp', [
       },
 
       // Intercept 401s and redirect you to login
-      responseError: function(response) {
-        if(response.status === 401) {
+      responseError: function (response) {
+        if (response.status === 401) {
           $location.path('/login');
           // remove any stale tokens
           $cookieStore.remove('token');
@@ -66,7 +66,7 @@ angular.module('meanVoteApp', [
   .run(function ($rootScope, $location, Auth) {
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$routeChangeStart', function (event, next) {
-      Auth.isLoggedInAsync(function(loggedIn) {
+      Auth.isLoggedInAsync(function (loggedIn) {
         if (next.authenticate && !loggedIn) {
           event.preventDefault();
           $location.path('/login');
@@ -79,10 +79,10 @@ angular.module('meanVoteApp', [
 function allowPatternDirective() {
   return {
     restrict: "A",
-    compile: function(tElement, tAttrs) {
-      return function(scope, element, attrs) {
+    compile: function (tElement, tAttrs) {
+      return function (scope, element, attrs) {
         // I handle key events
-        element.bind("keypress", function(event) {
+        element.bind("keypress", function (event) {
           var keyCode = event.which || event.keyCode; // I safely get the keyCode pressed from the event.
           var keyCodeChar = String.fromCharCode(keyCode); // I determine the char from the keyCode.
 

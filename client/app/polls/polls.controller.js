@@ -15,15 +15,15 @@ angular.module('meanVoteApp')
 
     var apiString;
 
-    var getPolls = function() {
+    var getPolls = function () {
       apiString = '/api/polls/' + Auth.getCurrentUser().name;
       $log.log('apiString: ' + apiString);
 
-      $http.get(apiString).success(function(data) {
+      $http.get(apiString).success(function (data) {
         $scope.$pollsData = data;
         console.log('successful:');
         console.log(data);
-      }).error(function(data) {
+      }).error(function (data) {
         console.log('Error: ' + data);
       });
     };

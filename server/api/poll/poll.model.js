@@ -11,7 +11,7 @@ var commentSchema = new Schema({
   userName: String
 });
 
-var PollSchema = new Schema ({
+var PollSchema = new Schema({
   question: String,
   userName: String,
   poll_results: [Number],
@@ -19,6 +19,6 @@ var PollSchema = new Schema ({
   comments: [commentSchema]
 });
 
-PollSchema.index({ userName: 1, question: 1}, { unique: true });
+PollSchema.index({userName: 1, question: 1}, {unique: true});
 
 module.exports = mongoose.model('Poll', PollSchema);

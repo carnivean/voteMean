@@ -4,12 +4,15 @@
 <div>
   <div ng-show="page==='deletePoll'" class="text-center">
     <h2>Deleting Poll</h2>
+
     <h3>Please wait while we try to delete the poll:</h3>
+
     <h3>{{$loc}}{{$routeParams.username}}/{{$routeParams.question}}</h3>
   </div>
 
   <div ng-show="page==='pollDeleted'" class="text-center">
     <h2>Success!</h2>
+
     <h3>Your poll was deleted...</h3>
   </div>
 

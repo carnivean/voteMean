@@ -16,28 +16,28 @@ angular.module('meanVoteApp')
 
     $scope.voted = false;
 
-    var submitPoll = function() {
+    var submitPoll = function () {
       apiString = '/api/polls/' + $scope.$routeParams.username + '/' + $scope.$routeParams.question;
       $log.log('apiString: ' + apiString);
 
-      $http.get(apiString).success(function(data) {
-          $scope.$pollData = data;
-          console.log('successful:');
-          console.log(data);
-      }).error(function(data) {
+      $http.get(apiString).success(function (data) {
+        $scope.$pollData = data;
+        console.log('successful:');
+        console.log(data);
+      }).error(function (data) {
         console.log('Error: ' + data);
       });
     };
 
-    $scope.submitVote = function() {
+    $scope.submitVote = function () {
       console.log($scope.$pollData);
       apiString = '/api/polls/' + $scope.$routeParams.username + '/' + $scope.$routeParams.question + '/' +
         $scope.selectedVote;
       console.log('apiString:' + apiString);
-      $http.put(apiString).success(function(data) {
+      $http.put(apiString).success(function (data) {
         console.log(data);
         $scope.voted = true;
-      }).error(function(err) {
+      }).error(function (err) {
         console.log('Error: ' + err);
       });
     };

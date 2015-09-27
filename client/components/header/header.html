@@ -1,13 +1,19 @@
 <header class="hero-unit" id="banner">
-  <div class="container" ng-hide="isLoggedIn()" >
+  <div class="container" ng-hide="isLoggedIn()">
     <h1>MeanVote</h1>
+
     <p class="lead">Create custom polls with live results. {{isLoggedIn()}}</p>
     <button class="btn-signup btn-primary btn"><a href="/signup">Sign up</a></button>
   </div>
   <div class="container" ng-show="isLoggedIn()">
     <h1>Dashboard</h1>
+
     <p class="lead">What would you like to do?</p>
-    <a href="/"  ng-click="returnToIndex()"><button class="btn-dashboard btn-large btn-primary btn">New Poll</button></a>
-    <a href="/polls"><button class="btn-dashboard btn-large btn-primary btn">My Polls</button></a>
+    <a href="/" ng-click="returnToIndex()">
+      <button class="btn-dashboard btn-large btn-primary btn">New Poll</button>
+    </a>
+    <a href="/polls">
+      <button class="btn-dashboard btn-large btn-primary btn">My Polls</button>
+    </a>
   </div>
 </header>
